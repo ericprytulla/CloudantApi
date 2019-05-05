@@ -33,7 +33,7 @@ app.put('/user', function(req, res){
       var users = cloudant.db.use('users');
       users.insert(req.body, req.body.user, function(err, body, header) {
         if (err) {
-          res.sendStatus('400');
+          res.sendStatus(400);
           console.error('[user.insert] ', err.message);
         }else {
           res.send(body);
@@ -47,7 +47,7 @@ app.get('/user/:id', function(req, res){
   var users = cloudant.db.use('users');
   users.get(req.params.id, function(err, body, header) {
     if (err) {
-      res.sendStatus('400');
+      res.sendStatus(400);
       console.error('[user.get] ', err.message);
     }else {
       res.send(body);
@@ -55,7 +55,7 @@ app.get('/user/:id', function(req, res){
     console.log('You have read user ' + req.body.name);
   });
 });
-var port = process.env.PORT || 3000
+let port = process.env.PORT || 3100;
 app.listen(port, function() {
     console.log("Listening to port: " + port);
 });
