@@ -1,6 +1,6 @@
 ---
 applications:
- - name: CloudantApi
+ - name: schnubbedibuhhhhhcloudantapi
    random-route: true
    memory: 256M
    host: schnubbedibuhhhhhcloudantapi
