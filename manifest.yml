@@ -1,5 +1,6 @@
 ---
 applications:
- - name: GetStartedNode
+ - name: CloudantApi
    random-route: true
    memory: 256M
+   host: schnubbedibuhhhhh.cloudantapi
