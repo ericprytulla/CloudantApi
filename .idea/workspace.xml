@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ba7796e-192e-4fbd-883f-5a1d920a8d00" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manifest.yml" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/antixss.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/js/lib/jquery.i18n/jquery.i18n.emitter.bidi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/js/lib/jquery.i18n/jquery.i18n.emitter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/js/lib/jquery.i18n/jquery.i18n.fallbacks.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/js/lib/jquery.i18n/jquery.i18n.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/js/lib/jquery.i18n/jquery.i18n.language.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/js/lib/jquery.i18n/jquery.i18n.messagestore.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/js/lib/jquery.i18n/jquery.i18n.parser.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/styles.css" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,7 +25,7 @@
         <entry file="file://$PROJECT_DIR$/manifest.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+              <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -128,12 +114,12 @@
       <option name="presentableId" value="Default" />
       <updated>1556806362121</updated>
       <workItem from="1556806363675" duration="1022000" />
-      <workItem from="1556988494130" duration="9601000" />
+      <workItem from="1556988494130" duration="9768000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10623000" />
+    <option name="totallyTimeSpent" value="10790000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1867" height="1093" extended-state="6" />
@@ -200,7 +186,7 @@
     <entry file="file://$PROJECT_DIR$/manifest.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
         </state>
       </provider>
     </entry>
