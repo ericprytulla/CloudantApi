@@ -31,7 +31,10 @@ cloudant.db.destroy('users', function(err) {
 
 app.put('/user', function(req, res){
       var users = cloudant.db.use('users');
+  console.log('User ' + req.body);
       let user = JSON.parse(req.body);
+
+      console.log('JSON-user ' + user);
       users.insert(user, user.user, function(err, body, header) {
         if (err) {
           res.sendStatus(400);
@@ -53,7 +56,7 @@ app.get('/user/:id', function(req, res){
     }else {
       res.send(body);
     }
-    console.log('You have read user ' + req.body.user);
+    console.log('You have read user ' + body.id);
   });
 });
 let port = process.env.PORT || 3100;
