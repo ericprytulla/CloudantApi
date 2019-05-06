@@ -31,18 +31,15 @@ cloudant.db.destroy('users', function(err) {
 
 app.put('/user', function(req, res){
       var users = cloudant.db.use('users');
-  console.log('User ' + req.body);
-      let user = JSON.parse(req.body);
-
-      console.log('JSON-user ' + user);
-      users.insert(user, user.user, function(err, body, header) {
+      console.log('JSON-user ' + JSON.stringify(req.body));
+      users.insert(req.body, req.body.user, function(err, body, header) {
         if (err) {
           res.sendStatus(400);
           console.error('[user.insert] ', err.message);
         }else {
           res.send(body);
         }
-        console.log('You have inserted user ' + user.user);
+        console.log('You have inserted user ' + req.body.user);
         console.log(body);
       });
     });
