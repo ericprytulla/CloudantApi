@@ -15,6 +15,14 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json());
 
+app.use (function (req, res, next) {
+    if (!req.secure|| process.env.BLUEMIX_REGION === undefined) {
+        next();
+    } else {
+        res.redirect('https://' + req.headers.host + req.url);
+    }
+});
+
 // Remove any existing database called "alice".
 cloudant.db.destroy('users', function(err) {
 
