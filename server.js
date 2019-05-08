@@ -16,25 +16,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
 app.use (function (req, res, next) {
-    if (!req.secure|| process.env.BLUEMIX_REGION === undefined) {
+    if (req.secure|| !process.env.BLUEMIX_REGION) {
         next();
     } else {
         res.redirect('https://' + req.headers.host + req.url);
     }
-});
-
-// Remove any existing database called "alice".
-cloudant.db.destroy('users', function(err) {
-
-  // Create a new "alice" database.
-  cloudant.db.create('users', function() {
-
-    // Specify the database we are going to use (alice)...
-    var users = cloudant.db.use('users')
-
-    // ...and insert a document in it.
-
-  });
 });
 
 app.put('/user', function(req, res){
