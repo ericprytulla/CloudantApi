@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
 app.use (function (req, res, next) {
-    if (req.secure|| !process.env.BLUEMIX_REGION) {
+    if (!req.secure|| process.env.BLUEMIX_REGION === undefined) {
         next();
     } else {
         res.redirect('https://' + req.headers.host + req.url);
