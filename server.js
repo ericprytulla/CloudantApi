@@ -31,7 +31,7 @@ app.put('/user', function (req, res) {
             res.sendStatus(400);
             console.error('[user.insert] ', err.message);
         } else {
-            console.log('You have inserted user ' + req.body.user);
+            console.log('You have inserted user ' + body.id);
             console.log(body);
             res.send(body);
         }
