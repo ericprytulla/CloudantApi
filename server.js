@@ -45,7 +45,7 @@ app.get('/user/:id', function (req, res) {
             res.sendStatus(400);
             console.error('[user.get] ', err.message);
         } else {
-            console.log('You have read user ' + body.id);
+            console.log('You have read user ' + body);
             res.send(body);
         }
     });
