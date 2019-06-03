@@ -43,7 +43,7 @@ app.get('/user/:id', function (req, res) {
     users.get(req.params.id, function (err, body, header) {
         if (err) {
             res.sendStatus(400);
-            console.error('[user.get] ', err.message);
+            console.error('[user.get] ', JSON.stringify(err));
         } else {
             console.log('You have read user ' + JSON.stringify(body));
             res.send(body);
@@ -57,7 +57,7 @@ app.post('/connect', function (req, res) {
     users.insert(req.body, req.body.name, function (err, body, header) {
         if (err) {
             res.sendStatus(400);
-            console.error('[user.connect] ', err.message);
+            console.error('[user.connect] ', JSON.stringify(err));
         } else {
             console.log('You have connected user ' + body.id);
             console.log(body);
@@ -72,7 +72,7 @@ app.get('/connectedUsers', function (req, res) {
     users.list(function (err, body, header) {
         if (err) {
             res.sendStatus(400);
-            console.error('[connected users.get] ', err.message);
+            console.error('[connected users.get] ', JSON.stringify(err));
         } else {
             console.log('You have read connected users ' + JSON.stringify(body));
             res.send(body.rows);
@@ -86,7 +86,7 @@ app.delete('/disconnect', function (req, res) {
     users.destroy(req.body.id, req.body.rev, function (err, body, header) {
         if (err) {
             res.sendStatus(400);
-            console.error('[user.get] ', err.message);
+            console.error('[user.disconnect] ', JSON.stringify(err));
         } else {
             console.log('You have read user ' + JSON.stringify(body));
             res.send(body);
