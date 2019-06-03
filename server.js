@@ -83,7 +83,7 @@ app.get('/connectedUsers', function (req, res) {
 app.delete('/disconnect', function (req, res) {
     var users = cloudant.db.use('connected_users');
     console.log('JSON-user ' + JSON.stringify(req.body));
-    users.destroy(req.params.id, req.body.rev, function (err, body, header) {
+    users.destroy(req.body.id, req.body.rev, function (err, body, header) {
         if (err) {
             res.sendStatus(400);
             console.error('[user.get] ', err.message);
