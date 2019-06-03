@@ -84,8 +84,8 @@ app.delete('/disconnect', function (req, res) {
     var users = cloudant.db.use('connected_users');
     console.log('JSON-user ' + JSON.stringify(req.body));
     users.head(req.body.id).then(headers => {
-        console.log(JSON.stringify(headers));
-        users.destroy(req.body.id, headers.etag, function (err, body, header) {
+        console.log(headers.etag);
+        users.destroy(req.body.id, JSON.parse(headers).etag, function (err, body, header) {
             if (err) {
                 res.sendStatus(400);
                 console.error('[user.disconnect] ', JSON.stringify(err));
