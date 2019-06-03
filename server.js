@@ -83,15 +83,19 @@ app.get('/connectedUsers', function (req, res) {
 app.delete('/disconnect', function (req, res) {
     var users = cloudant.db.use('connected_users');
     console.log('JSON-user ' + JSON.stringify(req.body));
-    users.destroy(req.body.id, req.body.rev, function (err, body, header) {
-        if (err) {
-            res.sendStatus(400);
-            console.error('[user.disconnect] ', JSON.stringify(err));
-        } else {
-            console.log('You have read user ' + JSON.stringify(body));
-            res.send(body);
-        }
+    users.head(req.body.id).then(rev => {
+        console.log(JSON.stringify(rev));
+        users.destroy(req.body.id, rev.rev, function (err, body, header) {
+            if (err) {
+                res.sendStatus(400);
+                console.error('[user.disconnect] ', JSON.stringify(err));
+            } else {
+                console.log('You have read user ' + JSON.stringify(body));
+                res.send(body);
+            }
+        });
     });
+
 });
 
 let port = process.env.PORT || 3100;
