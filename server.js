@@ -54,7 +54,7 @@ app.get('/user/:id', function (req, res) {
 app.post('/connect', function (req, res) {
     var users = cloudant.db.use('connected_users');
     console.log('JSON-user ' + JSON.stringify(req.body));
-    users.insert(req.body, req.body.user, function (err, body, header) {
+    users.insert(req.body, req.body.name, function (err, body, header) {
         if (err) {
             res.sendStatus(400);
             console.error('[user.connect] ', err.message);
