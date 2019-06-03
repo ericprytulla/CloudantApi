@@ -85,7 +85,7 @@ app.delete('/disconnect', function (req, res) {
     console.log('JSON-user ' + JSON.stringify(req.body));
     users.head(req.body.id).then(headers => {
         console.log(headers.etag);
-        users.destroy(req.body.id, headers.etag, function (err, body, header) {
+        users.destroy(req.body.id, JSON.parse(headers.etag), function (err, body, header) {
             if (err) {
                 res.sendStatus(400);
                 console.error('[user.disconnect] ', JSON.stringify(err));
