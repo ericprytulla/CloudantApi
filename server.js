@@ -50,6 +50,35 @@ app.get('/user/:id', function (req, res) {
         }
     });
 });
+
+app.get('/connectedUser', function (req, res) {
+    var users = cloudant.db.use('connectedUsers');
+    console.log('JSON-user ' + JSON.stringify(req.body));
+    users.list(function (err, body, header) {
+        if (err) {
+            res.sendStatus(400);
+            console.error('[user.get] ', err.message);
+        } else {
+            console.log('You have read user ' + body);
+            res.send(body.rows);
+        }
+    });
+});
+
+app.delete('/disconnect:user', function (req, res) {
+    var users = cloudant.db.use('connectedUsers');
+    console.log('JSON-user ' + JSON.stringify(req.body));
+    users.destroy(req.params.id, req.body.rev, function (err, body, header) {
+        if (err) {
+            res.sendStatus(400);
+            console.error('[user.get] ', err.message);
+        } else {
+            console.log('You have read user ' + body);
+            res.send(body);
+        }
+    });
+});
+
 let port = process.env.PORT || 3100;
 app.listen(port, function () {
     console.log("Listening to port: " + port);
