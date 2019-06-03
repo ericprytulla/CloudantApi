@@ -45,7 +45,7 @@ app.get('/user/:id', function (req, res) {
             res.sendStatus(400);
             console.error('[user.get] ', err.message);
         } else {
-            console.log('You have read user ' + body);
+            console.log('You have read user ' + JSON.stringify(body));
             res.send(body);
         }
     });
@@ -74,7 +74,7 @@ app.get('/connectedUsers', function (req, res) {
             res.sendStatus(400);
             console.error('[connected users.get] ', err.message);
         } else {
-            console.log('You have read connected users ' + body);
+            console.log('You have read connected users ' + JSON.stringify(body));
             res.send(body.rows);
         }
     });
@@ -88,7 +88,7 @@ app.delete('/disconnect', function (req, res) {
             res.sendStatus(400);
             console.error('[user.get] ', err.message);
         } else {
-            console.log('You have read user ' + body);
+            console.log('You have read user ' + JSON.stringify(body));
             res.send(body);
         }
     });
