@@ -51,21 +51,36 @@ app.get('/user/:id', function (req, res) {
     });
 });
 
-app.get('/connectedUser', function (req, res) {
+app.post('/connect', function (req, res) {
+    var users = cloudant.db.use('connectedUsers');
+    console.log('JSON-user ' + JSON.stringify(req.body));
+    users.insert(req.body, req.body.user, function (err, body, header) {
+        if (err) {
+            res.sendStatus(400);
+            console.error('[user.connect] ', err.message);
+        } else {
+            console.log('You have connected user ' + body.id);
+            console.log(body);
+            res.send(body);
+        }
+    });
+});
+
+app.get('/connectedUsers', function (req, res) {
     var users = cloudant.db.use('connectedUsers');
     console.log('JSON-user ' + JSON.stringify(req.body));
     users.list(function (err, body, header) {
         if (err) {
             res.sendStatus(400);
-            console.error('[user.get] ', err.message);
+            console.error('[connected users.get] ', err.message);
         } else {
-            console.log('You have read user ' + body);
+            console.log('You have read connected users ' + body);
             res.send(body.rows);
         }
     });
 });
 
-app.delete('/disconnect:user', function (req, res) {
+app.delete('/disconnect', function (req, res) {
     var users = cloudant.db.use('connectedUsers');
     console.log('JSON-user ' + JSON.stringify(req.body));
     users.destroy(req.params.id, req.body.rev, function (err, body, header) {
