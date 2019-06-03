@@ -75,9 +75,9 @@ app.get('/connectedUsers', function (req, res) {
             console.error('[connected users.get] ', JSON.stringify(err));
         } else {
             console.log('You have read connected users ' + JSON.stringify(body));
-            let res = [];
-            body.rows.forEach(elem => res.push(elem.doc));
-            res.send(res);
+            let arr = [];
+            body.rows.forEach(elem => arr.push(elem.doc));
+            res.send(arr);
         }
     });
 });
