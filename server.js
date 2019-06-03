@@ -69,7 +69,7 @@ app.post('/connect', function (req, res) {
 app.get('/connectedUsers', function (req, res) {
     var users = cloudant.db.use('connected_users');
     console.log('JSON-user ' + JSON.stringify(req.body));
-    users.list(function (err, body, header) {
+    users.list({include_docs: true}, function (err, body, header) {
         if (err) {
             res.sendStatus(400);
             console.error('[connected users.get] ', JSON.stringify(err));
