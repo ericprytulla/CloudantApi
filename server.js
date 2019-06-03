@@ -52,7 +52,7 @@ app.get('/user/:id', function (req, res) {
 });
 
 app.post('/connect', function (req, res) {
-    var users = cloudant.db.use('connectedUsers');
+    var users = cloudant.db.use('connected_users');
     console.log('JSON-user ' + JSON.stringify(req.body));
     users.insert(req.body, req.body.user, function (err, body, header) {
         if (err) {
@@ -67,7 +67,7 @@ app.post('/connect', function (req, res) {
 });
 
 app.get('/connectedUsers', function (req, res) {
-    var users = cloudant.db.use('connectedUsers');
+    var users = cloudant.db.use('connected_users');
     console.log('JSON-user ' + JSON.stringify(req.body));
     users.list(function (err, body, header) {
         if (err) {
@@ -81,7 +81,7 @@ app.get('/connectedUsers', function (req, res) {
 });
 
 app.delete('/disconnect', function (req, res) {
-    var users = cloudant.db.use('connectedUsers');
+    var users = cloudant.db.use('connected_users');
     console.log('JSON-user ' + JSON.stringify(req.body));
     users.destroy(req.params.id, req.body.rev, function (err, body, header) {
         if (err) {
