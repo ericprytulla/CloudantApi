@@ -53,7 +53,7 @@ app.get('/user/:id', function (req, res) {
 
 app.post('/connect', function (req, res) {
     var users = cloudant.db.use('connected_users');
-    console.log('JSON-user ' + JSON.stringify(req.body));
+    console.log('Connect: JSON-user ' + req.body);
     users.head(JSON.parse(req.body).name).then(headers => {
         console.log('connect fulfilled: ' + JSON.parse(headers));
         req.body.rev = JSON.parse(headers).etag;
