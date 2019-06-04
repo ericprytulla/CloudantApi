@@ -55,8 +55,8 @@ app.post('/connect', function (req, res) {
     var users = cloudant.db.use('connected_users');
     console.log('Connect: JSON-user ' + JSON.stringify(req.body));
     users.head(req.body.name).then(headers => {
-        console.log('connect fulfilled: ' + JSON.parse(headers));
-        req.body.rev = JSON.parse(headers).etag;
+        console.log('connect fulfilled: ' + JSON.stringify(headers));
+        req.body.rev = headers.etag;
         users.insert(req.body, req.body.name).then((body) => {
             console.log('You have connected user ' + body.id);
             console.log(body);
