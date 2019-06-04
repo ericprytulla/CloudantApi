@@ -55,19 +55,18 @@ app.post('/connect', function (req, res) {
     var users = cloudant.db.use('connected_users');
     console.log('JSON-user ' + JSON.stringify(req.body));
     users.head(req.body.name).then(headers => {
+        console.log('connect fulfilled: ' + JSON.parse(headers));
         req.body.rev = JSON.parse(headers).etag;
-        users.insert(req.body, req.body.name, function (err, body, header) {
-            if (err) {
-                res.sendStatus(400);
-                console.error('[user.connect] ', JSON.stringify(err));
-            } else {
-                console.log('You have connected user ' + body.id);
-                console.log(body);
-                res.send(body);
-            }
+        users.insert(req.body, req.body.name).then((body) => {
+            console.log('You have connected user ' + body.id);
+            console.log(body);
+            res.send(body);
+        }).catch(err => {
+            res.sendStatus(400);
+            console.error('[user.connect] ', JSON.stringify(err));
         });
     }).catch(err => {
-        console.log(JSON.stringify(err));
+        console.log('connect rejected: ' + JSON.stringify(err));
         users.insert(req.body, req.body.name, function (err, body, header) {
             if (err) {
                 res.sendStatus(400);
