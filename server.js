@@ -55,10 +55,10 @@ app.post('/connect', function (req, res) {
     var users = cloudant.db.use('connected_users');
     console.log('JSON-user ' + JSON.stringify(req.body));
     users.head(req.body.name).then(headers => {
-        let rev = JSON.parse(headers).etag;
-        if (rev){
-            req.body.rev = rev;
-        }
+        req.body.rev = JSON.parse(headers).etag;
+    }).catch(err => {
+        console.log(JSON.stringify(err));
+    }).finally(() => {
         users.insert(req.body, req.body.name, function (err, body, header) {
             if (err) {
                 res.sendStatus(400);
