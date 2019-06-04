@@ -56,9 +56,6 @@ app.post('/connect', function (req, res) {
     console.log('JSON-user ' + JSON.stringify(req.body));
     users.head(req.body.name).then(headers => {
         req.body.rev = JSON.parse(headers).etag;
-    }).catch(err => {
-        console.log(JSON.stringify(err));
-    }).finally(() => {
         users.insert(req.body, req.body.name, function (err, body, header) {
             if (err) {
                 res.sendStatus(400);
@@ -69,7 +66,19 @@ app.post('/connect', function (req, res) {
                 res.send(body);
             }
         });
-    });
+    }).catch(err => {
+        console.log(JSON.stringify(err));
+        users.insert(req.body, req.body.name, function (err, body, header) {
+            if (err) {
+                res.sendStatus(400);
+                console.error('[user.connect] ', JSON.stringify(err));
+            } else {
+                console.log('You have connected user ' + body.id);
+                console.log(body);
+                res.send(body);
+            }
+        });
+    })
 
 });
 
