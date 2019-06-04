@@ -56,7 +56,7 @@ app.post('/connect', function (req, res) {
     console.log('Connect: JSON-user ' + JSON.stringify(req.body));
     users.head(req.body.name).then(headers => {
         console.log('connect fulfilled: ' + JSON.stringify(headers));
-        req.body.rev = headers.etag;
+        req.body.rev = JSON.parse(headers.etag);
         users.insert(req.body, req.body.name).then((body) => {
             console.log('You have connected user ' + body.id);
             console.log(body);
