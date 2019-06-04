@@ -103,15 +103,15 @@ app.delete('/disconnect', function (req, res) {
     console.log('JSON-user ' + JSON.stringify(req.body));
     users.head(req.body.id).then(headers => {
         console.log(headers.etag);
-        users.destroy(req.body.id, JSON.parse(headers.etag), function (err, body, header) {
-            if (err) {
-                res.sendStatus(400);
-                console.error('[user.disconnect] ', JSON.stringify(err));
-            } else {
+        users.destroy(req.body.id, JSON.parse(headers.etag)).then(body => {
                 console.log('You have read user ' + JSON.stringify(body));
                 res.send(body);
-            }
+        }).catch(err => {
+            res.sendStatus(400);
+            console.warn('[user.disconnect] ', JSON.stringify(err));
         });
+    }).catch(err => {
+        console.warn('[user.disconnect] ', JSON.stringify(err));
     });
 
 });
